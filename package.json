@@ -1,7 +1,7 @@
 {
-  "name": "angular-quickstart",
+  "name": "calculator",
   "version": "1.0.0",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "description": "Calculator calculates",
   "scripts": {
     "build": "tsc -p src/",
     "build:watch": "tsc -p src/ -w",
@@ -20,8 +20,8 @@
     "test:once": "karma start karma.conf.js --single-run",
     "lint": "tslint ./src/**/*.ts -t verbose"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["calculator", "angular", "reactive", "sales", "accounting"],
+  "author": "Vohidjon",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~4.0.0",
