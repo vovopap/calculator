@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
-import {Margin} from 'margin';
+import {Business} from './business';
 @NgModule({
-    providers: [Margin]
+    providers: [Business]
 })
 export class CalculatorModule {
 
