@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Business} from '../business';
-import {Margin} from '../static_margin';
+import {Business} from './business';
+import {Margin} from './static_margin';
 
 @Component({
   selector: 'my-app',
