@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Business} from "../business";
-import {Margin} from "../static_margin";
+import {Business} from '../business';
+import {Margin} from '../static_margin';
 
 @Component({
   selector: 'my-app',
@@ -12,8 +12,8 @@ import {Margin} from "../static_margin";
 })
 export class AppComponent  {
   marginCalc: Margin;
-  constructor(private business: Business){
+  friends: string[] = ['Ross', 'Rachel', 'Joey', 'Phoebe', 'Monica', 'Chandler'];
+  constructor(private business: Business) {
     this.marginCalc = business.margin({});
   }
-  friends : string[] = ['Ross', 'Rachel', 'Joey', 'Phoebe', 'Monica', 'Chandler'];
 }
