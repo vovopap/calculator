@@ -1,4 +1,9 @@
 export class Margin {
+    /**
+     * used for tracking last synced value
+     */
+    lastVariable: string;
+
     price: number;
     /**
      * @percentage
@@ -25,11 +30,18 @@ export class Margin {
                 /**
                  * #price -> revenue -> margin, markup
                  */
-                this.revenue = this.price + this.profit;
+                if (this.revenue) {
+                    this.profit = this.revenue - this.price;
+                } else if (this.profit) {
+                    this.revenue = this.price + this.profit;
+                } else if (this.margin) {
+                    this.revenue = this.price * 100 / (100 - this.margin);
+                    this.profit = this.revenue - this.price;
+                    break;
+                }
 
                 this.margin = this.profit / this.revenue * 100;
-                this.markup = this.profit / this.price * 100;
-
+                // this.markup = this.profit / this.price * 100;
                 break;
             }
             case 'margin': {
@@ -87,5 +99,6 @@ export class Margin {
                 break;
             }
         }
+        this.lastVariable = variable;
     }
 }

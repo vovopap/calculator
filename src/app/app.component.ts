@@ -9,7 +9,6 @@ import {Margin} from './static_margin';
 })
 export class AppComponent {
     marginCalc: Margin;
-    friends: string[] = ['Ross', 'Rachel', 'Joey', 'Phoebe', 'Monica', 'Chandler'];
 
     constructor(private business: Business) {
         this.marginCalc = business.margin({});
