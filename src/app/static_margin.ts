@@ -75,9 +75,9 @@ export class Margin {
                 /**
                  * #profit -> revenue -> margin, markup
                  */
-                if(this.price){
+                if (this.price) {
                     this.revenue = this.price + this.profit;
-                } else if(this.revenue) {
+                } else if (this.revenue) {
                     this.price = this.revenue - this.profit;
                 }
 
