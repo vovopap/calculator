@@ -2,7 +2,14 @@ export class Margin {
     /**
      * used for tracking last synced value
      */
-    lastVariable: string;
+    lastSyncedVariable: string;
+
+    /**
+     * the name of the variable that should preferably be not changed during sync
+     * One of the cases is user has recently interacted with this variable
+     * and it would not be user-friendly to change it
+     */
+    strongVariable: string;
 
     price: number;
     /**
@@ -25,16 +32,19 @@ export class Margin {
     }
 
     sync(variable: string) {
+        if(this.lastSyncedVariable !== variable) {
+            this.strongVariable = this.lastSyncedVariable;
+        }
+        this.lastSyncedVariable = variable;
+        console.log('----------------------------------------------');
+        console.log('Priority -> ' + this.strongVariable);
         switch (variable) {
             case 'price': {
-                /**
-                 * #price -> revenue -> margin, markup
-                 */
-                if (this.revenue) {
+                if (this.revenue && this.strongVariable === 'revenue') {
                     this.profit = this.revenue - this.price;
-                } else if (this.profit) {
+                } else if (this.profit && this.strongVariable === 'profit') {
                     this.revenue = this.price + this.profit;
-                } else if (this.margin) {
+                } else if (this.margin && this.strongVariable === 'margin') {
                     this.revenue = this.price * 100 / (100 - this.margin);
                     this.profit = this.revenue - this.price;
                     break;
@@ -69,18 +79,24 @@ export class Margin {
                 break;
             }
             case 'revenue': {
-                /**
-                 * #revenue -> (price .. profit) -> margin, markup
-                 */
                 if (this.price) {
                     this.profit = this.revenue - this.price;
                 } else if (this.profit) {
                     this.price = this.revenue - this.profit;
                 }
 
-                this.margin = this.profit / this.revenue * 100;
-                this.markup = this.profit / this.price * 100;
+                if (this.price && this.strongVariable === 'price') {
+                    this.profit = this.revenue - this.price;
+                } else if (this.profit && this.strongVariable === 'profit') {
+                    this.price = this.revenue - this.profit;
+                } else if (this.margin && this.strongVariable === 'margin') {
+                    this.revenue = this.price * 100 / (100 - this.margin);
+                    this.profit = this.revenue - this.price;
+                    break;
+                }
 
+                this.margin = this.profit / this.revenue * 100;
+                // this.markup = this.profit / this.price * 100;
                 break;
             }
             case 'profit': {
@@ -99,6 +115,5 @@ export class Margin {
                 break;
             }
         }
-        this.lastVariable = variable;
     }
 }
