@@ -1,27 +1,27 @@
 <div class="content-wrapper col-xs-4 col-xs-push-1">
     <div class="input-group">
         <span class="input-group-addon" id="cost-add-on">Cost</span>
-        <input type="number" [(ngModel)]="marginCalc.price" (change)="marginCalc.sync('price')" class="form-control text-right" id="cost-input">
+        <input type="number" [ngModel]="marginCalc.price" (ngModelChange)="marginCalc.price = $event; marginCalc.sync('price')" class="form-control text-right" id="cost-input">
         <span class="input-group-addon" id="cost-percentage"><i class="fa fa-dollar"></i></span>
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="margin-add-on">Margin</span>
-        <input type="number" [(ngModel)]="marginCalc.margin" (change)="marginCalc.sync('margin')" class="form-control text-right" id="margin-input">
+        <input type="number" [ngModel]="marginCalc.margin" (ngModelChange)="marginCalc.margin = $event; marginCalc.sync('margin')" class="form-control text-right" id="margin-input">
         <span class="input-group-addon" id="margin-percentage"><i class="fa fa-percent"></i></span>
     </div>
-    <!--<div class="input-group">-->
-        <!--<span class="input-group-addon" id="markup-add-on">Markup</span>-->
-        <!--<input type="number" [(ngModel)]="marginCalc.markup" (change)="marginCalc.sync('markup')" class="form-control text-right" id="markup-input">-->
-        <!--<span class="input-group-addon" id="markup-percentage"><i class="fa fa-percent"></i></span>-->
-    <!--</div>-->
+    <div class="input-group">
+        <span class="input-group-addon" id="markup-add-on">Markup</span>
+        <input type="number" [ngModel]="marginCalc.markup" (ngModelChange)="marginCalc.markup = $event; marginCalc.sync('markup')" class="form-control text-right" id="markup-input">
+        <span class="input-group-addon" id="markup-percentage"><i class="fa fa-percent"></i></span>
+    </div>
     <div class="input-group">
         <span class="input-group-addon" id="revenue-add-on">Revenue</span>
-        <input type="number" [(ngModel)]="marginCalc.revenue" (change)="marginCalc.sync('revenue')" class="form-control text-right" id="revenue-input">
+        <input type="number" [ngModel]="marginCalc.revenue" (ngModelChange)="marginCalc.revenue = $event; marginCalc.sync('revenue')" class="form-control text-right" id="revenue-input">
         <span class="input-group-addon" id="revenue-percentage"><i class="fa fa-dollar"></i></span>
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="profit-add-on">Profit</span>
-        <input type="number" [(ngModel)]="marginCalc.profit" (change)="marginCalc.sync('profit')" class="form-control text-right" id="profit-input">
+        <input type="number" [ngModel]="marginCalc.profit" (ngModelChange)="marginCalc.profit = $event; marginCalc.sync('profit')" class="form-control text-right" id="profit-input">
         <span class="input-group-addon" id="profit-percentage"><i class="fa fa-dollar"></i></span>
     </div>
 </div>
