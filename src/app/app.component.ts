@@ -9,8 +9,8 @@ import {Margin} from './static_margin';
 })
 export class AppComponent {
     marginCalc: Margin;
-
-    constructor(private business: Business) {
-        this.marginCalc = business.margin({});
-    }
+    title: string = 'Holov';
+    // constructor(private business: Business) {
+    //     this.marginCalc = business.margin({});
+    // }
 }
