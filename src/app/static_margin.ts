@@ -24,11 +24,11 @@ export class Margin {
     profit: number;
 
     constructor(initialVariables: any) {
-        this.price = initialVariables.price;
-        this.margin = initialVariables.margin;
-        this.markup = initialVariables.markup;
-        this.revenue = initialVariables.revenue;
-        this.profit = initialVariables.profit;
+        this.price = typeof initialVariables.price === 'undefined' ? NaN : initialVariables.price;
+        this.margin = typeof initialVariables.margin === 'undefined' ? NaN : initialVariables.margin;
+        this.markup = typeof initialVariables.markup === 'undefined' ? NaN : initialVariables.markup;
+        this.revenue = typeof initialVariables.revenue === 'undefined' ? NaN : initialVariables.revenue;
+        this.profit = typeof initialVariables.profit === 'undefined' ? NaN : initialVariables.profit;
     }
 
     sync(variable: string) {
@@ -118,5 +118,6 @@ export class Margin {
                 break;
             }
         }
+        console.log(this);
     }
 }
