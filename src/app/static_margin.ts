@@ -82,12 +82,6 @@ export class Margin {
                 break;
             }
             case 'revenue': {
-                // if (this.price) {
-                //     this.profit = this.revenue - this.price;
-                // } else if (this.profit) {
-                //     this.price = this.revenue - this.profit;
-                // }
-
                 if (this.price && this.strongVariable === 'price') {
                     this.profit = this.revenue - this.price;
                 } else if (this.profit && this.strongVariable === 'profit') {

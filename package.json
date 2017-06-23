@@ -61,6 +61,7 @@
     "lodash": "^4.16.4",
     "protractor": "~4.0.14",
     "rimraf": "^2.5.4",
+    "tslint": "^5.4.3",
     "typescript": "~2.1.0"
   },
   "repository": {}

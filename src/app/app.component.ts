@@ -10,7 +10,6 @@ import {Margin} from './static_margin';
 })
 export class AppComponent {
     marginCalc: Margin;
-    title: string = 'Holov';
     constructor(private business: Business) {
         this.marginCalc = business.margin({});
     }

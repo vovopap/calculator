@@ -1,5 +1,5 @@
-import {Business} from "./business";
-import {Margin} from "./static_margin";
+import {Business} from './business';
+import {Margin} from './static_margin';
 describe('Business - nothing set initially', () => {
     let margin: Margin;
 
