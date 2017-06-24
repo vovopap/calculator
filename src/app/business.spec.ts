@@ -8,13 +8,15 @@ describe('Business - nothing set initially', () => {
     });
 
     it('all variables must be NaN', () => {
-        expect([margin.price, margin.margin, margin.markup, margin.revenue, margin.profit]).toEqual([NaN, NaN, NaN, NaN, NaN]);
+        let variables = [margin.price, margin.margin, margin.markup, margin.revenue, margin.profit];
+        expect(variables).toEqual([NaN, NaN, NaN, NaN, NaN], 'not all variables equal to NaN');
     });
 
     it('setting #price should not change anything', () => {
         margin.price = 100;
         margin.sync('price');
-        expect([margin.margin, margin.markup, margin.revenue, margin.profit]).toEqual([NaN, NaN, NaN, NaN]);
+        let variables = [margin.margin, margin.markup, margin.revenue, margin.profit];
+        expect(variables).toEqual([NaN, NaN, NaN, NaN], 'setting price changed some');
     });
 
     it('setting #margin should not change anything expect for #markup', () => {
@@ -48,4 +50,29 @@ describe('Business - nothing set initially', () => {
         margin.sync('price');
         expect(margin.lastSyncedVariable).toBe('price');
     });
+
+    it('#strongVariable should be previously synced distinct variable', () => {
+        margin.price = 100;
+        margin.sync('price');
+        expect(margin.strongVariable).toBeUndefined('#strongVariable undefined');
+        margin.price = 200;
+        margin.sync('price');
+        expect(margin.strongVariable).toBeUndefined('#strongVariable still undefined');
+        margin.margin = 20;
+        margin.sync('margin');
+        expect(margin.strongVariable).toBe('price', '#strongVariable price');
+    });
+
+    it('#strongVariable should be `price` and not change', () => {
+        let priceValue = 100;
+        margin.price = priceValue;
+        margin.sync('price');
+        margin.revenue = priceValue + 10;
+        margin.sync('revenue');
+        expect(margin.strongVariable).toBeUndefined('#strongVariable undefined');
+    });
+});
+
+describe('', () => {
+
 });

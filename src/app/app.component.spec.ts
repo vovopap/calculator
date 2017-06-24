@@ -1,6 +1,5 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
-import {By, BrowserModule} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {Business} from './business';
