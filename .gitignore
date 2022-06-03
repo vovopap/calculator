@@ -12,3 +12,7 @@ e2e/**/*.js
 e2e/**/*.js.map
 _test-output
 _temp
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+branch_structure.json
